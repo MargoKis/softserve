@@ -77,7 +77,7 @@ function splitArray(arr) {
   };
 }
 
-5;
+6;
 
 /*/////// перший спосіб ////////*/
 let time = new Date();
