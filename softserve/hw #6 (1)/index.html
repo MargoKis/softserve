@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ModalWin</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <ul id="list">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+
+    <button id="openModal">Open Modal</button>
+
+    <div id="modal"></div>
+
+    <script>
+      function getModalContent() {
+        const list = document.getElementById("list");
+        const listItems = list.getElementsByTagName("li");
+
+        const content = [
+          listItems[0].textContent,
+          listItems[4].textContent,
+          listItems[1].textContent,
+          listItems[3].textContent,
+          listItems[2].textContent,
+        ];
+
+        return content.join(", ");
+      }
+
+      function showModalContent() {
+        const modal = document.getElementById("modal");
+        const content = getModalContent();
+
+        modal.textContent = "Результат виводу: " + content;
+
+        modal.style.display = "block";
+      }
+
+      const openModalBtn = document.getElementById("openModal");
+      openModalBtn.addEventListener("click", showModalContent);
+    </script>
+  </body>
+</html>
