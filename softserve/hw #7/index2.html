@@ -1,0 +1,46 @@
+<!-- 7.3 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn-blue">Button blue</button>
+    <button id="btn-pink">Button pink</button>
+    <button id="btn-brown">Button brown</button>
+    <a href="#" id="link-yellow">Link yellow</a>
+
+    <script>
+      document.getElementById("btn-blue").addEventListener("click", function () {
+        document.body.style.backgroundColor = "blue";
+      });
+
+      document.getElementById("btn-pink").addEventListener("dblclick", function () {
+        document.body.style.backgroundColor = "pink";
+      });
+
+      document
+        .getElementById("btn-brown")
+        .addEventListener("mousedown", function () {
+          document.body.style.backgroundColor = "brown";
+        });
+
+      document.getElementById("btn-brown").addEventListener("mouseup", function () {
+        document.body.style.backgroundColor = "white";
+      });
+
+      document
+        .getElementById("link-yellow")
+        .addEventListener("mouseover", function () {
+          document.body.style.backgroundColor = "yellow";
+        });
+
+      document.getElementById("link-yellow").addEventListener("mouseout", function () {
+        document.body.style.backgroundColor = "white";
+      });
+    </script>
+  </body>
+</html>

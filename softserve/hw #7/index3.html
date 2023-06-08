@@ -1,0 +1,32 @@
+<!-- 7.4 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <select id="dropdown">
+      <option value="1">ківі</option>
+      <option value="2">груша</option>
+      <option value="3">ананас</option>
+      <option value="4">малина</option>
+      <option value="5">полуниця</option>
+    </select>
+    <button id="deleteButton">Видалити зі списку</button>
+    <script>
+      document
+        .getElementById("deleteButton")
+        .addEventListener("click", function () {
+          let dropdown = document.getElementById("dropdown");
+          let selectedOption = dropdown.options[dropdown.selectedIndex];
+
+          if (selectedOption) {
+            dropdown.removeChild(selectedOption);
+          }
+        });
+    </script>
+  </body>
+</html>
