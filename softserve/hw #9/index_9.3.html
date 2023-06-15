@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("h3").each(function () {
+          var nextElement = $(this).next();
+          if (nextElement.is("div")) {
+            $(this).before(nextElement);
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h3>header1</h3>
+    <div>text1</div>
+    <h3>header2</h3>
+    <div>text2</div>
+  </body>
+</html>
