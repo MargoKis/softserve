@@ -1,0 +1,120 @@
+13.1
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AJAX Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>AJAX Example</h1>
+    <button id="myButton">Натисніть мене</button>
+
+    <script>
+      const button = document.getElementById("myButton");
+      button.addEventListener("click", () => {
+        $.ajax({
+          url: "/api/data",
+          method: "GET",
+          success: function (response) {
+            button.innerHTML = response;
+          },
+          error: function (xhr, status, error) {
+            console.error(error);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
+
+13.2
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AJAX Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>AJAX Example</h1>
+    <button id="myButton">Натисніть мене</button>
+    <ul id="authorsList"></ul>
+
+    <script>
+      const btn = document.getElementById("myButton");
+      const authorsList = document.getElementById("authorsList");
+
+      btn.addEventListener("click", () => {
+        $.ajax({
+          url: "books.json",
+          method: "GET",
+          dataType: "json",
+          success: function (response) {
+            authorsList.innerHTML = "";
+
+            response.forEach((book) => {
+              const authorName = book.author;
+              const listItem = document.createElement("li");
+              listItem.innerText = authorName;
+              authorsList.appendChild(listItem);
+            });
+          },
+          error: function (xhr, status, error) {
+            console.error(error);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
+
+13.3
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random User API Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>Random User API Example</h1>
+    <div id="userContainer"></div>
+
+    <script>
+      $(document).ready(function () {
+        const userContainer = document.getElementById("userContainer");
+
+        function fetchRandomUser() {
+          $.ajax({
+            url: "https://randomuser.me/api/",
+            method: "GET",
+            dataType: "json",
+            success: function (response) {
+              const user = response.results[0];
+
+              const userElement = document.createElement("div");
+              userElement.innerHTML = `
+              <img src="${user.picture.large}" alt="User Avatar">
+              <p><strong>Ім'я:</strong> ${user.name.first} ${user.name.last}</p>
+              <p><strong>Вік:</strong> ${user.dob.age}</p>
+              <p><strong>Стать:</strong> ${user.gender}</p>
+              <p><strong>Країна:</strong> ${user.location.country}</p>
+              <p><strong>Логін:</strong> ${user.login.username}</p>
+              <p><strong>Пароль:</strong> ${user.login.password}</p>
+              <p><strong>Пошта:</strong> ${user.email}</p>
+            `;
+
+              userContainer.appendChild(userElement);
+            },
+            error: function (xhr, status, error) {
+              console.error(error);
+            },
+          });
+        }
+
+        fetchRandomUser();
+      });
+    </script>
+  </body>
+</html>
